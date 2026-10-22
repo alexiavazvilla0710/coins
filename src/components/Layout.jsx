@@ -20,10 +20,13 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { Home } from './Home';
 import { About } from './About';
+import { Fav } from './Fav';
 import { useNavigate } from 'react-router';
 import { Detail } from './Detail';
 import {useContext} from 'react'
@@ -166,12 +169,23 @@ export const Layout = () => {
             </ListItemButton>
           </ListItem>
         </List>
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => navigate("/favs")}>
+              <ListItemIcon>
+                <FavoriteIcon />
+              </ListItemIcon>
+              <ListItemText primary="Favorite" />
+            </ListItemButton>
+          </ListItem>
+        </List>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/favs" element={<Fav />} />
           <Route path="/detail/:id" element={<Detail />} />
         </Routes>
 
